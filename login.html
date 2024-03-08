@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page with Background Image Example</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body background="moujib-aghrout-s9ESRUFnKDg-unsplash_1980x1320.jpg">
+<div id="bg"></div>
+
+<form method="get">
+  <img src="Logo@2x.png" alt="" >
+  <div class="form-field">
+    <input type="email" placeholder="Email / Username" required/>
+  </div>
+  
+  <div class="form-field">
+    <input type="password" placeholder="Password" required/>                         </div>
+  
+  <div class="form-field">
+    <button class="btn" type="submit">Log in</button>
+    <p>OR</p>
+    <h4> <a href="createpage.html"></a></h4>
+    
+  </div>
+</form>
+  
+</body>
+<script>
+  function login() {
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+
+    // Retrieve user data from localStorage
+    const userData = localStorage.getItem(email);
+
+    if (!userData) {
+      alert('Email not found. Please check your credentials.');
+      return;
+    }
+
+    const { email: storedEmail, password: storedPassword } = JSON.parse(userData);
+
+    if (password === storedPassword) {
+      alert('Login successful!');
+      window.location.href = 'index.html'; 
+    } else {
+      alert('Invalid password. Please try again.');
+    }
+  }
+</script>
+
+</script>
+</html>

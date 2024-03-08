@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create and Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    form {
+      display: inline-block;
+      text-align: left;
+      margin: 20px;
+    }
+
+    input {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Create Account</h1>
+  <form id="createForm">
+    <label for="createUsername">Username:</label>
+    <input type="text" id="createUsername" required>
+    <br>
+    <label for="createPassword">Password:</label>
+    <input type="password" id="createPassword" required>
+    <br>
+    <button type="button" onclick="createAccount()">Create Account</button>
+  </form>
+
+  <h1>Login</h1>
+  <form id="loginForm">
+    <label for="loginUsername">Username:</label>
+    <input type="text" id="loginUsername" required>
+    <br>
+    <label for="loginPassword">Password:</label>
+    <input type="password" id="loginPassword" required>
+    <br>
+    <button type="button" onclick="login()">Login</button>
+  </form>
+
+  <script>
+    // Simulated user database
+    const users = [];
+
+    function createAccount() {
+      const username = document.getElementById('createUsername').value;
+      const password = document.getElementById('createPassword').value;
+
+      // Check if the username is already taken
+      if (users.find(user => user.username === username)) {
+        alert('Username already taken. Please choose another.');
+        return;
+      }
+
+      // Create a new user and add it to the database
+      const newUser = { username, password };
+      users.push(newUser);
+
+      alert('Account created successfully!');
+    }
+
+    function login() {
+      const username = document.getElementById('loginUsername').value;
+      const password = document.getElementById('loginPassword').value;
+
+      // Check if the user exists in the database
+      const user = users.find(user => user.username === username);
+
+      if (!user || user.password !== password) {
+        alert('Invalid username or password. Please try again.');
+        return;
+      }
+
+      alert('Login successful!');
+    }
+  </script>
+
+</body>
+</html>
